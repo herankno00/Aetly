@@ -4,8 +4,8 @@ namespace Aetly.Data
 {
     public static  class DataList
     {
-        private static   homeContext _hqcontext;
-        private static   ErrorContext _ercontext;
+        private static   homeContext? _hqcontext;
+        private static   ErrorContext? _ercontext;
          
         public static List<home_QQ> home_QQs = new List<home_QQ>();
         public static List<Error > error = new List<Error>();
@@ -13,7 +13,7 @@ namespace Aetly.Data
         public static List<home_Mk> home_Mk = new List<home_Mk>();
         public static List<home_Gm> home_Gm = new List<home_Gm>();
         public static List<Collection> collections = new List<Collection>();
-        public static IConfiguration config = null;
+        public static IConfiguration? config = null;
         #region//home_Mk
         public static void homemkloadtk(IConfiguration configuration)
         {
@@ -22,7 +22,7 @@ namespace Aetly.Data
                 config = configuration;
                 _hqcontext = new homeContext(configuration);
             }
-            home_Mk = _hqcontext.home_Mk.ToList();
+            home_Mk = _hqcontext.home_Mk?.ToList() ?? new List<home_Mk>();
         }
         /// <summary>
         /// 增加home_QQ
@@ -31,9 +31,9 @@ namespace Aetly.Data
         /// <returns>true</returns>
         public static bool addmk(home_Mk value)
         {
-            _hqcontext.home_Mk.Add(value);
-            _hqcontext.SaveChanges();
-            DataList.homemkloadtk(config);
+            _hqcontext?.home_Mk.Add(value);
+            _hqcontext?.SaveChanges();
+            if (config != null) DataList.homemkloadtk(config);
             return true;
         }
         #endregion
@@ -45,7 +45,7 @@ namespace Aetly.Data
                 config = configuration;
                 _hqcontext = new homeContext(configuration);
             }
-            home_QQs= _hqcontext.home_QQ.ToList();
+            home_QQs = _hqcontext.home_QQ?.ToList() ?? new List<home_QQ>();
         }
         /// <summary>
         /// 增加home_QQ
@@ -54,9 +54,9 @@ namespace Aetly.Data
         /// <returns>true</returns>
         public static bool addhq(home_QQ value)
         {
-            _hqcontext.home_QQ.Add(value);
-            _hqcontext.SaveChanges();
-            DataList.homeqqloadtk(config);
+            _hqcontext?.home_QQ.Add(value);
+            _hqcontext?.SaveChanges();
+            if (config != null) DataList.homeqqloadtk(config);
             return true;
         }
         #endregion
@@ -69,7 +69,7 @@ namespace Aetly.Data
                 config = configuration;
                 _hqcontext = new homeContext(configuration);
             }
-            home_Cs = _hqcontext.home_Cs.ToList();
+            home_Cs = _hqcontext.home_Cs?.ToList() ?? new List<home_Cs>();
         }
         /// <summary>
         /// 增加home_Cs
@@ -78,9 +78,9 @@ namespace Aetly.Data
         /// <returns>true</returns>
         public static bool addCs(home_Cs value)
         {
-            _hqcontext.home_Cs.Add(value);
-            _hqcontext.SaveChanges();
-            DataList.homeqqloadtk(config);
+            _hqcontext?.home_Cs.Add(value);
+            _hqcontext?.SaveChanges();
+            if (config != null) DataList.homecsloadtk(config);
             return true;
         }
         #endregion
@@ -94,7 +94,7 @@ namespace Aetly.Data
                 config = configuration;
                 _ercontext = new ErrorContext(configuration);
             }
-            error = _ercontext.Error.ToList();
+            error = _ercontext.Error?.ToList() ?? new List<Error>();
         }
         /// <summary>
         /// 增加Error
@@ -103,9 +103,9 @@ namespace Aetly.Data
         /// <returns>true</returns>
         public static bool adderrorlog(Error value)
         {
-            _ercontext.Error.Add(value);
-            _ercontext.SaveChanges();
-            DataList.errorloadtk(config);
+            _ercontext?.Error.Add(value);
+            _ercontext?.SaveChanges();
+            if (config != null) DataList.errorloadtk(config);
             return true;
         }
         #endregion
@@ -118,18 +118,18 @@ namespace Aetly.Data
                 config = configuration;
                 _hqcontext = new homeContext(configuration);
             }
-            home_Gm = _hqcontext.home_Gm.ToList();
+            home_Gm = _hqcontext.home_Gm?.ToList() ?? new List<home_Gm>();
         }
         /// <summary>
-        /// 增加Error
+        /// 增加游戏数据
         /// </summary>
         /// <param name="value">添加的数据</param>
         /// <returns>true</returns>
-        public static bool homeloadgm(home_Gm value)
+        public static bool addgm(home_Gm value)
         {
-            _hqcontext.home_Gm.Add(value);
-            _hqcontext.SaveChanges();
-            DataList.homeloadgm(config);
+            _hqcontext?.home_Gm.Add(value);
+            _hqcontext?.SaveChanges();
+            if (config != null) DataList.homeloadgm(config);
             return true;
         }
         #endregion

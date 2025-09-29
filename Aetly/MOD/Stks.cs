@@ -4,7 +4,7 @@ namespace Aetly.MOD
 {
     public static class Tkvaluetxt
     {
-        public static string[] tkvt = null;
+        public static string[]? tkvt = null;
         public static void all()
         {
             tkvt = File.ReadAllLines(Directory.GetCurrentDirectory() + "/MOD/tkvaluetext.txt");
@@ -13,14 +13,16 @@ namespace Aetly.MOD
 
     public class Stks
     {
-        public string Name { get; set; }
+        public string? Name { get; set; }
         public string Tk
         {
             get
             {
-                
-                   Random r = new Random();
-                int it=Math.Abs( r.Next(98));
+                if (Tkvaluetxt.tkvt == null || Tkvaluetxt.tkvt.Length == 0)
+                    return "No data available";
+                    
+                Random r = new Random();
+                int it = Math.Abs(r.Next(Tkvaluetxt.tkvt.Length));
                 return Tkvaluetxt.tkvt[it];
             }
 
