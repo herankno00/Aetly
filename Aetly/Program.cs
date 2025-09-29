@@ -32,7 +32,7 @@ var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 
-app.UseCors(MyAllowSpecificOrigins);//ÆôÓÃ¿çÓòÎÊÌâ
+app.UseCors(MyAllowSpecificOrigins);//ï¿½ï¿½ï¿½Ã¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 if (app.Environment.IsDevelopment())
 {
@@ -51,4 +51,5 @@ DataList.homecsloadtk(builder.Configuration);
 DataList.homemkloadtk(builder.Configuration);
 DataList.homeloadgm(builder.Configuration);
 DataList.errorloadtk(builder.Configuration);
+DataList.initializeCollections();
 app.Run();

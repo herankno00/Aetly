@@ -36,4 +36,16 @@ namespace Aetly.MOD
         [System.Text.Json.Serialization.JsonIgnore]
         public int ID { get; set; }
     }
+    
+    public class Collection
+    {
+        [System.Text.Json.Serialization.JsonIgnore]
+        public int ID { get; set; }
+        public string? name { get; set; }
+        public decimal price { get; set; }
+        public int collection_count { get; set; }
+        public string? image_path { get; set; }
+        public string? description { get; set; }
+        public DateTime created_time { get; set; }
+    }
 }
